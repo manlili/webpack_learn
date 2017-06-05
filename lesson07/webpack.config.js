@@ -144,9 +144,9 @@
 //module.exports = {
 //	entry: {
 //		a: './src/script/a.js',
-//		b: './src/script/a.js',
-//		c: './src/script/a.js',
-//		d: './src/script/a.js'
+//		b: './src/script/b.js',
+//		c: './src/script/c.js',
+//		d: './src/script/d.js'
 //	},
 //	output: {
 //		path: path.resolve(__dirname, './dist'),
@@ -183,9 +183,9 @@
 //module.exports = {
 //	entry: {
 //		a: './src/script/a.js',
-//		b: './src/script/a.js',
-//		c: './src/script/a.js',
-//		d: './src/script/a.js'
+//		b: './src/script/b.js',
+//		c: './src/script/c.js',
+//		d: './src/script/d.js'
 //	},
 //	output: {
 //		path: path.resolve(__dirname, './dist'),
@@ -221,17 +221,63 @@
 
 
 // 给打包生成的html排除某些的chunks载入
+//var path = require("path"); //webpack升级到2.0以后，路径需要引用这个模块
+//var htmlWebpackPlugin = require('html-webpack-plugin');
+//module.exports = {
+//	entry: {
+//		a: './src/script/a.js',
+//		b: './src/script/b.js',
+//		c: './src/script/c.js',
+//		d: './src/script/d.js'
+//	},
+//	output: {
+//		path: path.resolve(__dirname, './dist'),
+//		publicPath: 'https://cdn.example.com/',
+//		filename: 'js/[name].js'    //区分文件有[name], [hash], [chunkhash]
+//	},
+//	plugins: [
+//		new htmlWebpackPlugin({
+//		  	filename: 'a.html', //生成的文件名字
+//			template: 'index.html',  //生成文件的 模板
+//			title: '我是a',
+//			excludeChunks: ['b', 'c', 'd']  //注意是数组
+//		}),
+//		new htmlWebpackPlugin({
+//		  	filename: 'b.html', //生成的文件名字
+//			template: 'index.html',  //生成文件的 模板
+//			title: '我是b',
+//			excludeChunks: ['a', 'c', 'd']  //注意是数组
+//		}),
+//		new htmlWebpackPlugin({
+//		  	filename: 'c.html', //生成的文件名字
+//			template: 'index.html',  //生成文件的 模板
+//			title: '我是c',
+//			excludeChunks: ['a', 'b', 'd']  //注意是数组
+//		}),
+//		new htmlWebpackPlugin({
+//		  	filename: 'd.html', //生成的文件名字
+//			template: 'index.html',  //生成文件的 模板
+//			title: '我是d',
+//			excludeChunks: ['a', 'b', 'c']  //注意是数组
+//		})
+//	]
+//}
+
+
+//将共用的js源码直接写在html，不共用js再外链引入,外链对应的js
 var path = require("path"); //webpack升级到2.0以后，路径需要引用这个模块
 var htmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
 	entry: {
 		a: './src/script/a.js',
-		b: './src/script/a.js',
-		c: './src/script/a.js',
-		d: './src/script/a.js'
+		b: './src/script/b.js',
+		c: './src/script/c.js',
+		d: './src/script/d.js',
+		test: './src/script/test.js'
 	},
 	output: {
 		path: path.resolve(__dirname, './dist'),
+		publicPath: 'https://cdn.example.com/',
 		filename: 'js/[name].js'    //区分文件有[name], [hash], [chunkhash]
 	},
 	plugins: [
@@ -239,24 +285,28 @@ module.exports = {
 		  	filename: 'a.html', //生成的文件名字
 			template: 'index.html',  //生成文件的 模板
 			title: '我是a',
+			inject: false,
 			excludeChunks: ['b', 'c', 'd']  //注意是数组
 		}),
 		new htmlWebpackPlugin({
 		  	filename: 'b.html', //生成的文件名字
 			template: 'index.html',  //生成文件的 模板
 			title: '我是b',
+			inject: false,
 			excludeChunks: ['a', 'c', 'd']  //注意是数组
 		}),
 		new htmlWebpackPlugin({
 		  	filename: 'c.html', //生成的文件名字
 			template: 'index.html',  //生成文件的 模板
 			title: '我是c',
+			inject: false,
 			excludeChunks: ['a', 'b', 'd']  //注意是数组
 		}),
 		new htmlWebpackPlugin({
 		  	filename: 'd.html', //生成的文件名字
 			template: 'index.html',  //生成文件的 模板
 			title: '我是d',
+			inject: false,
 			excludeChunks: ['a', 'b', 'c']  //注意是数组
 		})
 	]

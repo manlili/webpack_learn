@@ -3,8 +3,15 @@
 	<head>
 		<meta charset="UTF-8">
 		<title><%= htmlWebpackPlugin.options.title %></title>
+		<script type="text/javascript">
+			<%= compilation.assets[htmlWebpackPlugin.files.chunks.test.entry.substr(htmlWebpackPlugin.files.publicPath.length)].source() %>  //内联化引入js
+		</script>
 	</head>
 	<body>
-		<script src="bundle.js" type="text/javascript" charset="utf-8"></script>
+		<% for (var key in htmlWebpackPlugin.files.chunks) {%>
+			<% if(key !== 'test') { %>
+				<script src="<%= htmlWebpackPlugin.files.chunks[key].entry %>" type="text/javascript" charset="utf-8"></script>
+			<% } %>
+		<% } %>
 	</body>
 </html>
