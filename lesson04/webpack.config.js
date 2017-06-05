@@ -109,7 +109,11 @@ module.exports = {
 		  	filename: 'index-[hash].html', //生成的文件名字
 			template: 'index.html',  //生成文件的 模板
 			inject: 'body',    //打包生成的js,css和其他东西插入的位置
-			title: 'i am girl'
+			title: 'i am girl',
+			minify: {  //压缩代码
+				collapseWhitespace: true,
+				html5: true
+			}
 		})
 	]
 }
