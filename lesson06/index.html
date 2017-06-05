@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title><%= htmlWebpackPlugin.options.title %></title>
+		<script src="<%=htmlWebpackPlugin.files.chunks.mian.entry %>" type="text/javascript" charset="utf-8"></script>
+		<script src="<%=htmlWebpackPlugin.files.chunks.test.entry %>" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<script src="bundle.js" type="text/javascript" charset="utf-8"></script>
+		<% for (key in htmlWebpackPlugin.files) {%>
+		<%= key%> : <%= JSON.stringify(htmlWebpackPlugin.files[key]) %>
+		<% } %>
+		
+
+		<% for (key in htmlWebpackPlugin.options) {%>
+		<%= key%> : <%= JSON.stringify(htmlWebpackPlugin.options[key]) %>
+		<% } %>
+	</body>
+</html>
