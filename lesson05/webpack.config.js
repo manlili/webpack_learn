@@ -92,7 +92,30 @@
 //}
 
 
-//使用html-webpack-plugin这种plugins的更多options
+//使用html-webpack-plugin这种plugins的更多options和使用htmlWebpackPlugin.files.chunks.模块名.entry
+//var path = require("path"); //webpack升级到2.0以后，路径需要引用这个模块
+//var htmlWebpackPlugin = require('html-webpack-plugin');
+//module.exports = {
+//	entry: {
+//		mian: './src/script/main.js',
+//		test: './src/script/test.js'
+//	},
+//	output: {
+//		path: path.resolve(__dirname, './dist'),
+//		filename: 'js/[name]-[hash].js'    //区分文件有[name], [hash], [chunkhash]
+//	},
+//	plugins: [
+//		new htmlWebpackPlugin({
+//		  	filename: 'index-[hash].html', //生成的文件名字
+//			template: 'index.html',  //生成文件的 模板
+//			inject: 'body',    //打包生成的js,css和其他东西插入的位置
+//			title: 'i am girl'
+//		})
+//	]
+//}
+
+
+// 用publicPath配置打包后生成线上地址
 var path = require("path"); //webpack升级到2.0以后，路径需要引用这个模块
 var htmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
@@ -102,13 +125,14 @@ module.exports = {
 	},
 	output: {
 		path: path.resolve(__dirname, './dist'),
+		publicPath: 'https://cdn.example.com/',
 		filename: 'js/[name]-[hash].js'    //区分文件有[name], [hash], [chunkhash]
 	},
 	plugins: [
 		new htmlWebpackPlugin({
 		  	filename: 'index-[hash].html', //生成的文件名字
 			template: 'index.html',  //生成文件的 模板
-			inject: 'body',    //打包生成的js,css和其他东西插入的位置
+			inject: false,    //打包生成的js,css和其他东西插入的位置
 			title: 'i am girl'
 		})
 	]
