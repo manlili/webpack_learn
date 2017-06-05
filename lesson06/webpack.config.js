@@ -144,9 +144,9 @@
 //module.exports = {
 //	entry: {
 //		a: './src/script/a.js',
-//		b: './src/script/a.js',
-//		c: './src/script/a.js',
-//		d: './src/script/a.js'
+//		b: './src/script/b.js',
+//		c: './src/script/c.js',
+//		d: './src/script/d.js'
 //	},
 //	output: {
 //		path: path.resolve(__dirname, './dist'),
@@ -183,9 +183,9 @@
 //module.exports = {
 //	entry: {
 //		a: './src/script/a.js',
-//		b: './src/script/a.js',
-//		c: './src/script/a.js',
-//		d: './src/script/a.js'
+//		b: './src/script/b.js',
+//		c: './src/script/c.js',
+//		d: './src/script/d.js'
 //	},
 //	output: {
 //		path: path.resolve(__dirname, './dist'),
@@ -226,9 +226,9 @@ var htmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
 	entry: {
 		a: './src/script/a.js',
-		b: './src/script/a.js',
-		c: './src/script/a.js',
-		d: './src/script/a.js'
+		b: './src/script/b.js',
+		c: './src/script/c.js',
+		d: './src/script/d.js'
 	},
 	output: {
 		path: path.resolve(__dirname, './dist'),
