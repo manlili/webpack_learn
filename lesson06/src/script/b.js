@@ -1,3 +1,3 @@
 function test () {
-	alert("123");
+	alert("b");
 }

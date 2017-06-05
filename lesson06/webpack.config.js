@@ -138,10 +138,129 @@
 //	]
 //}
 
+// 多页面打包
+//var path = require("path"); //webpack升级到2.0以后，路径需要引用这个模块
+//var htmlWebpackPlugin = require('html-webpack-plugin');
+//module.exports = {
+//	entry: {
+//		a: './src/script/a.js',
+//		b: './src/script/a.js',
+//		c: './src/script/a.js',
+//		d: './src/script/a.js'
+//	},
+//	output: {
+//		path: path.resolve(__dirname, './dist'),
+//		filename: 'js/[name].js'    //区分文件有[name], [hash], [chunkhash]
+//	},
+//	plugins: [
+//		new htmlWebpackPlugin({
+//		  	filename: 'a.html', //生成的文件名字
+//			template: 'index.html',  //生成文件的 模板
+//			title: '我是a'
+//		}),
+//		new htmlWebpackPlugin({
+//		  	filename: 'b.html', //生成的文件名字
+//			template: 'index.html',  //生成文件的 模板
+//			title: '我是b'
+//		}),
+//		new htmlWebpackPlugin({
+//		  	filename: 'c.html', //生成的文件名字
+//			template: 'index.html',  //生成文件的 模板
+//			title: '我是c'
+//		}),
+//		new htmlWebpackPlugin({
+//		  	filename: 'd.html', //生成的文件名字
+//			template: 'index.html',  //生成文件的 模板
+//			title: '我是d'
+//		})
+//	]
+//}
 
 
+// 给打包生成的html指定固定的chunks载入
+//var path = require("path"); //webpack升级到2.0以后，路径需要引用这个模块
+//var htmlWebpackPlugin = require('html-webpack-plugin');
+//module.exports = {
+//	entry: {
+//		a: './src/script/a.js',
+//		b: './src/script/a.js',
+//		c: './src/script/a.js',
+//		d: './src/script/a.js'
+//	},
+//	output: {
+//		path: path.resolve(__dirname, './dist'),
+//		filename: 'js/[name].js'    //区分文件有[name], [hash], [chunkhash]
+//	},
+//	plugins: [
+//		new htmlWebpackPlugin({
+//		  	filename: 'a.html', //生成的文件名字
+//			template: 'index.html',  //生成文件的 模板
+//			title: '我是a',
+//			chunks: ['a']  //注意是数组
+//		}),
+//		new htmlWebpackPlugin({
+//		  	filename: 'b.html', //生成的文件名字
+//			template: 'index.html',  //生成文件的 模板
+//			title: '我是b',
+//			chunks: ['b']
+//		}),
+//		new htmlWebpackPlugin({
+//		  	filename: 'c.html', //生成的文件名字
+//			template: 'index.html',  //生成文件的 模板
+//			title: '我是c',
+//			chunks: ['c']
+//		}),
+//		new htmlWebpackPlugin({
+//		  	filename: 'd.html', //生成的文件名字
+//			template: 'index.html',  //生成文件的 模板
+//			title: '我是d',
+//			chunks: ['d']
+//		})
+//	]
+//}
 
 
+// 给打包生成的html排除某些的chunks载入
+var path = require("path"); //webpack升级到2.0以后，路径需要引用这个模块
+var htmlWebpackPlugin = require('html-webpack-plugin');
+module.exports = {
+	entry: {
+		a: './src/script/a.js',
+		b: './src/script/a.js',
+		c: './src/script/a.js',
+		d: './src/script/a.js'
+	},
+	output: {
+		path: path.resolve(__dirname, './dist'),
+		filename: 'js/[name].js'    //区分文件有[name], [hash], [chunkhash]
+	},
+	plugins: [
+		new htmlWebpackPlugin({
+		  	filename: 'a.html', //生成的文件名字
+			template: 'index.html',  //生成文件的 模板
+			title: '我是a',
+			excludeChunks: ['b', 'c', 'd']  //注意是数组
+		}),
+		new htmlWebpackPlugin({
+		  	filename: 'b.html', //生成的文件名字
+			template: 'index.html',  //生成文件的 模板
+			title: '我是b',
+			excludeChunks: ['a', 'c', 'd']  //注意是数组
+		}),
+		new htmlWebpackPlugin({
+		  	filename: 'c.html', //生成的文件名字
+			template: 'index.html',  //生成文件的 模板
+			title: '我是c',
+			excludeChunks: ['a', 'b', 'd']  //注意是数组
+		}),
+		new htmlWebpackPlugin({
+		  	filename: 'd.html', //生成的文件名字
+			template: 'index.html',  //生成文件的 模板
+			title: '我是d',
+			excludeChunks: ['a', 'b', 'c']  //注意是数组
+		})
+	]
+}
 
 
 
