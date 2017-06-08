@@ -1,0 +1,8 @@
+html , body {
+	padding: 0;
+	margin: 0;
+	background-color: red;
+}
+.box-flex {
+	display: flex;
+}
